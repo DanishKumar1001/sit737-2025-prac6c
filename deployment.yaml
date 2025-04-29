@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: new-calculator-microservice
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: new-calculator-microservice
+  template:
+    metadata:
+      labels:
+        app: new-calculator-microservice
+    spec:
+      containers:
+      - name: new-calculator-microservice
+        image: danish1001/new-calculator-microservice:v2
+        ports:
+        - containerPort: 3000

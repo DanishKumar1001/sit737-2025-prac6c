@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  web:
+    image: new-calculator-microservice:v2
+    build: .
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: on-failure
